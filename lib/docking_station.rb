@@ -11,7 +11,8 @@ def release_bike
 end
 
 def dock(bike)
-	@bike = bike
+	fail "Docking Station full" if @bike
+	@bike  = bike
 end
 
 end

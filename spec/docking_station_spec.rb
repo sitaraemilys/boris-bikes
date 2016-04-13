@@ -28,6 +28,10 @@ end
 it "raises exception if no bikes in docking station" do
 	expect {subject.release_bike}.to raise_error("No bikes")
 end
-
-
+describe '#dock' do
+it "raises exception if docking station is full" do
+	subject.dock(Bike.new)
+	expect {subject.dock Bike.new }.to raise_error("Docking Station full")
+end
+end
 end
