@@ -30,20 +30,20 @@ describe DockingStation do
 				expect {subject.release_bike}.to raise_error("No bikes")
 			end
 
-		DEFAULT_CAPACITY=20
-			describe "stubbing DEFAULT_CAPACITY" do
-				it "can stub DEFAULT_CAPACITY with the different value" do
-					stub_const("DEFAULT_CAPACITY", 5)
-					expect(DEFAULT_CAPACITY).to eq(5)
-				end
-				it "restores the stubbed constant when the example complete" do
-					expect(DEFAULT_CAPACITY).to eq(20)
-				end
-			end
+		# DEFAULT_CAPACITY=20
+		# 	describe "stubbing DEFAULT_CAPACITY" do
+		# 		it "can stub DEFAULT_CAPACITY with the different value" do
+		# 			stub_const("DEFAULT_CAPACITY", 5)
+		# 			expect(DEFAULT_CAPACITY).to eq(5)
+		# 		end
+		# 		it "restores the stubbed constant when the example complete" do
+		# 			expect(DEFAULT_CAPACITY).to eq(20)
+		# 		end
+		# 	end
 
 			describe '#dock' do
 				it "raises exception if docking station is full" do
-				DEFAULT_CAPACITY.times {subject.dock(Bike.new)}
+				DockingStation::DEFAULT_CAPACITY.times {subject.dock(Bike.new)}
 				expect {subject.dock(Bike.new)}.to raise_error("Docking Station full")
 				end
 			end
