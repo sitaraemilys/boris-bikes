@@ -3,9 +3,9 @@ require 'rspec/expectations'
 
 describe DockingStation do
 
-			it {is_expected.to respond_to :release_bike}
+			it {is_expected.to respond_to(:release_bike)}
 			it {is_expected.to respond_to(:dock).with(1).argument}
-			it {is_expected.to respond_to (:bikes)}
+			it {is_expected.to respond_to(:bikes)}
 
 			describe '#initialize' do
 						it "has a variable capacity" do
