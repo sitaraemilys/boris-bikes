@@ -5,7 +5,7 @@ describe DockingStation do
 
 			it {is_expected.to respond_to(:release_bike)}
 			it {is_expected.to respond_to(:dock).with(1).argument}
-			it {is_expected.to respond_to(:bikes)}
+			# it {is_expected.to respond_to(:bikes)}
 
 			describe '#initialize' do
 						it "has a variable capacity" do
@@ -14,8 +14,7 @@ describe DockingStation do
 							expect(station.capacity).to eq capacity
 						end
 						it "sets the the capacity to default value when capacity is not provided" do
-							station = DockingStation.new
-							expect(station.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+							expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
 						end
 			end
 
@@ -37,7 +36,7 @@ describe DockingStation do
 
 			describe '#dock' do
 					it "raises exception if docking station is full" do
-						DockingStation::DEFAULT_CAPACITY.times {subject.dock(Bike.new)}
+						subject.capacity.times {subject.dock(Bike.new)}
 						expect {subject.dock(Bike.new)}.to raise_error("Docking Station full")
 					end
 			end
