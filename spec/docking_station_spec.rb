@@ -19,11 +19,11 @@ describe DockingStation do
 		expect(subject.release_bike.working?).to eq true
 	end
 
-it "return docked bikes" do
-	bike = Bike.new
-	subject.dock(bike)
-	expect(subject.bikes).to eq bike
-end
+# it "return docked bikes" do
+# 	bike = Bike.new
+# 	subject.dock(bike)
+# 	expect(subject.bikes).to eq bike
+# end
 
 it "raises exception if no bikes in docking station" do
 	expect {subject.release_bike}.to raise_error("No bikes")
