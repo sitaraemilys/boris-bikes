@@ -29,7 +29,7 @@ describe DockingStation do
 						subject.dock(bike)
 						expect(subject.release_bike.working).to eq true
 					end
-					it "raises exception if no bikes in docking statixon" do
+					it "raises exception if no bikes in docking station" do
 						expect {subject.release_bike}.to raise_error("No bikes")
 					end
 
@@ -44,6 +44,13 @@ describe DockingStation do
 					it "raises exception if docking station is full" do
 						subject.capacity.times {subject.dock(Bike.new)}
 						expect {subject.dock(Bike.new)}.to raise_error("Docking Station full")
+					end
+
+					it "accepts a broken bike" do
+						bike = Bike.new
+						broken_bike = bike.broken
+						subject.dock(broken_bike)
+						expect(@bikes.last).to eq broken_bike
 					end
 			end
 end

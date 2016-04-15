@@ -8,11 +8,9 @@ attr_accessor :working
 	end
 
 def broken
-#	!(self.working?)
-	if @working == true
-		@working = false
-	end
-
+	#	!(self.working?)
+	@working = false
+	self
 end
 
 end
