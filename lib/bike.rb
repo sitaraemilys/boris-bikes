@@ -1,15 +1,16 @@
 
 
 class Bike
+attr_accessor :working
 
-def working?
-	true
-end
+	def initialize
+		@working = true
+	end
 
-def report
+def broken
 #	!(self.working?)
-	if working? == true
-		false
+	if @working == true
+		@working = false
 	end
 
 end

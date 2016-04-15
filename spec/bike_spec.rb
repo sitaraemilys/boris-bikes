@@ -1,11 +1,11 @@
 require 'bike'
 describe Bike do
 
-it {is_expected.to respond_to :working?}
+it {is_expected.to respond_to :working}
 
 it "will report a bike as broken" do
 	bike = Bike.new
- expect(bike.report).to eq false
+ expect(bike.broken).to eq false
 end
 
 end
