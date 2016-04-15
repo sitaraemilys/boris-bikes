@@ -21,13 +21,9 @@ describe DockingStation do
 			let(:bike) {double :bike}
 
 			describe '#releasebike' do
-					it 'releases a bike' do
-						subject.dock double(:bike)
-						expect(subject.release_bike).to eq bike
-					end
 					it "releases a working bike" do
 						allow(bike).to receive(:working).and_return(true)
-						subject.dock double(:bike)
+						subject.dock(bike)
 						expect(subject.release_bike.working).to eq true
 					end
 					it "raises exception if no bikes in docking station" do
@@ -35,7 +31,9 @@ describe DockingStation do
 					end
 
 					it "raises exception if you are trying to take out a broken bike" do
-						broken_bike = double(:bike).broken
+						allow(bike).to receive(:working).and be_broken
+						#allow(bike).to receive(:broken)
+						broken_bike = bike.broken
 						subject.dock(broken_bike)
 					  expect {subject.release_bike}.to raise_error("Sorry, this bike is broken")
 					end
