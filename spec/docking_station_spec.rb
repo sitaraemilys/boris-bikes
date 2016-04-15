@@ -31,7 +31,7 @@ describe DockingStation do
 					end
 
 					it "raises exception if you are trying to take out a broken bike" do
-						allow(bike).to receive(:working).and be_broken
+						allow(bike).to receive(:working).and eq false
 						#allow(bike).to receive(:broken)
 						broken_bike = bike.broken
 						subject.dock(broken_bike)
