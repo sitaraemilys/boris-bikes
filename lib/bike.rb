@@ -7,6 +7,10 @@ attr_accessor :working
 		@working = true
 	end
 
+	def working
+		@working = true
+	end
+
 def broken
 	#	!(self.working?)
 	@working = false
