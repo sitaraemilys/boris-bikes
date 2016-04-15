@@ -3,9 +3,12 @@ require 'rspec/expectations'
 
 describe DockingStation do
 
+	let(:bike) {double(:bike, working: true)}
+	let(:broken_bike) {double(:broken_bike, working: false)}
+
 			it {is_expected.to respond_to(:release_bike)}
 			it {is_expected.to respond_to(:dock).with(1).argument}
-			 it {is_expected.to respond_to(:bikes)}
+			it {is_expected.to respond_to(:bikes)}
 
 			describe '#initialize' do
 						it "has a variable capacity" do
@@ -18,11 +21,8 @@ describe DockingStation do
 						end
 			end
 
-			let(:bike) {double :bike}
-
 			describe '#releasebike' do
 					it "releases a working bike" do
-						allow(bike).to receive(:working).and_return(true)
 						subject.dock(bike)
 						expect(subject.release_bike.working).to eq true
 					end
@@ -31,9 +31,6 @@ describe DockingStation do
 					end
 
 					it "raises exception if you are trying to take out a broken bike" do
-						allow(bike).to receive(:working).and eq false
-						#allow(bike).to receive(:broken)
-						broken_bike = bike.broken
 						subject.dock(broken_bike)
 					  expect {subject.release_bike}.to raise_error("Sorry, this bike is broken")
 					end
@@ -41,12 +38,11 @@ describe DockingStation do
 
 			describe '#dock' do
 					it "raises exception if docking station is full" do
-						subject.capacity.times {subject.dock double(:bike)}
-						expect {subject.dock double(:bike)}.to raise_error("Docking Station full")
+						subject.capacity.times {subject.dock(bike)}
+						expect {subject.dock(bike)}.to raise_error("Docking Station full")
 					end
 
 					it "accepts a broken bike" do
-						broken_bike = double(:bike).broken
 						subject.dock(broken_bike)
 						expect(subject.bikes.last).to eq broken_bike
 					end
