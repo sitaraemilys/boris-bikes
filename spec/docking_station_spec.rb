@@ -61,12 +61,5 @@ describe DockingStation do
       end
     end
 
-    describe '#clear_of_broken_bikes' do
-      it 'contains no more broken bikes' do
-        subject.dock(broken_bike)
-        subject.clear_of_broken_bikes
-        expect(subject.broken_bikes).to be_empty
-      end
-    end
 
 end
